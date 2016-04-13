@@ -29,6 +29,6 @@ if($result[0]["created_by"] == $user_id){
 
 setcookie("message", $message, time() + 60, '/'); // Cookie lives for 1 minute
 
-header("Location: ".$page.'../list.php');
+header("Location: /cs/list.php");
 
 ?>
