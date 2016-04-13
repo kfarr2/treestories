@@ -1,0 +1,13 @@
+<VirtualHost *:80>
+    ServerName treestories.local
+    # so wildcard DNS for any IP works (see xip.io or nip.io)
+    ServerAlias 10.0.0.10.*
+
+    DocumentRoot /path/to/treestories
+    ErrorLog /var/log/httpd/treestories.local.error_log
+    CustomLog /var/log/httpd/treestories.local.access_log vhost
+
+    <Directory /path/to/treestories>
+        AllowOverride All
+    </Directory>
+</VirtualHost>
