@@ -9,9 +9,12 @@ Edit the paths shown in the file and restart the service.
     vi /etc/httpd/vhost.d/treestories.conf
     service httpd restart
 
-You will also need to copy the database schema
+You will also need to copy the database schema, and will have to get the tree data
+from the server.
 
     mysqld treestories < treestories.sql
+    mkdir data && cd data
+    wget -r --no-parent https://climatecope.research.pdx.edu/cs/data/
 
 ## Social Media
 
