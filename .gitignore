@@ -2,3 +2,4 @@ config.ini
 files/*
 sessions/*
 .htaccess
+data/*
