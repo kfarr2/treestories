@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <div id="popup-form">
 <?php
 require_once('helpers.php');
