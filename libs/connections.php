@@ -4,9 +4,11 @@
  * are defined here.
  *
  */
-session_start();
+
 // Define a ROOT filepath
 define("ROOT", realpath(__DIR__ . "/../"));
+
+set_include_path(get_include_path() . PATH_SEPARATOR . ROOT);
 
 // Define the facebook directory (for the php API)
 define('FACEBOOK_SDK_V4_SRC_DIR', ROOT.'/libs/facebook-php-sdk-v4/src/Facebook/');
@@ -48,7 +50,5 @@ $page = "http" . ($_SERVER["HTTPS"] == "on" ? "s": "") . "://" . $_SERVER['HTTP_
 
 $email_address = $_config['email_address'];
 
-#ini_set('session.save_path', ROOT . '/sessions/');
-set_include_path(get_include_path() . PATH_SEPARATOR . ROOT);
 
 ?>
