@@ -1,8 +1,4 @@
-<?php
-
-include('light_header.php');
-
-?>
+<?php include('light_header.php'); ?>
 <div id='legend'>
     <p>
     <a class="btn btn-default btn-xs" href='/cs/login.php'><span class="glyphicon glyphicon-user"></span> Login</a>
