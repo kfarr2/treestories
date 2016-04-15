@@ -1,10 +1,12 @@
 <?php
-require_once("libs/facebook-php-sdk-v4/src/Facebook/autoload.php");
-require_once("libs/google-api-php-client/src/Google/autoload.php");
-include('libs/helpers.php');
-require_once('libs/connections.php');
-include("libs/card.php");
 session_start();
+include('libs/helpers.php');
+include('libs/connections.php');
+include("libs/card.php");
+include_once("libs/facebook-php-sdk-v4/src/Facebook/autoload.php");
+include_once("libs/google-api-php-client/src/Google/autoload.php");
+
+
 $title = "Posts";
 
 // Define everything having to do with pagination.
@@ -85,9 +87,7 @@ for($i = $offset; $i < ($offset + $posts_per_page); $i++){
 messages();
 
 
-// THIS IS THE SOURCE OF THE LATEST CRAPOUT
 if(check_login($conn, '/cs/list.php')){
-////=========================================
     $logout = "<a href='/cs/libs/logout.php' id='logout' class='btn btn-default pull-right'>Logout</a>";
 } else {
     $logout = "<a href='/cs/login.php' id='logout' class='btn btn-default pull-right'>Login</a>";
@@ -95,8 +95,6 @@ if(check_login($conn, '/cs/list.php')){
 
 // Include the header
 include('libs/light_header.php');
-?>
-<?php
 ?>
 <div id="list-background"></div>
 <div id="list-container" class="container">
