@@ -80,7 +80,8 @@ function get_google_info(){
 }
 
 function get_fb_info(){
-        $fb = new Facebook\Facebook([
+        include('connections.php');
+	$fb = new Facebook\Facebook([
 	    'app_id' => $fb_app_id,
 	    'app_secret' => $fb_app_secret,
 	    'default_graph_version' => 'v2.5',

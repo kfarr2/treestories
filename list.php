@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('libs/helpers.php');
-include('libs/connections.php');
+include_once('libs/connections.php');
 include("libs/card.php");
 include_once("libs/facebook-php-sdk-v4/src/Facebook/autoload.php");
 include_once("libs/google-api-php-client/src/Google/autoload.php");
@@ -87,7 +87,7 @@ for($i = $offset; $i < ($offset + $posts_per_page); $i++){
 messages();
 
 
-if(check_login($conn, '/cs/list.php')){
+if(check_login($conn, $page.'/cs/list.php')){
     $logout = "<a href='/cs/libs/logout.php' id='logout' class='btn btn-default pull-right'>Logout</a>";
 } else {
     $logout = "<a href='/cs/login.php' id='logout' class='btn btn-default pull-right'>Login</a>";
