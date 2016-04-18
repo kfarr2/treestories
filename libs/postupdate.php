@@ -174,6 +174,6 @@ if($treestory){
     setcookie('message', 'ERROR: Cannot post empty story', time() + 10, '/');
 }
 // And redirect to the list page
-header("Location: ".$page.'../list.php');
+header("Location: ".$page.'cs/list.php');
 
 ?>
