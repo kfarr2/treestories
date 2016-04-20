@@ -1,5 +1,6 @@
 <?php
 require_once('connections.php');
+include('connections.php');
 
 // Nice function to escape to html safe characters.
 function escape_html($val){
@@ -80,15 +81,14 @@ function get_google_info(){
 }
 
 function get_fb_info(){
-        include('connections.php');
 	$fb = new Facebook\Facebook([
-	    'app_id' => $fb_app_id,
-	    'app_secret' => $fb_app_secret,
+	    'app_id' => FACEBOOK_APP_ID,
+	    'app_secret' => FACEBOOK_APP_SECRET,
 	    'default_graph_version' => 'v2.5',
         ]);
 
         try {
-	    $response = $fb->get('/me?fields=id,name,email', $_SESSION['fb_access_token']);
+	    $response = $fb->get('/me?fields=id,name,email', FACEBOOK_ACCESS_TOKEN);
         } catch(Facebook\Exceptions\FacebookSDKException $e){
 	    // Handle this
 	    var_dump($e);
