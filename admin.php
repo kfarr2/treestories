@@ -27,7 +27,7 @@ include('libs/light_header.php');
             <h1>Users</h1>
         </div>
         <div class="col-md-1">
-            <a href="<?php echo $page . "list.php"; ?>" class="btn btn-default pull-right">Back</a>
+            <a href="<?php echo $page . "cs/list.php"; ?>" class="btn btn-default pull-right">Back</a>
         </div>
     </div>
 <table class="table table-striped">
