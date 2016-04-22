@@ -47,7 +47,7 @@ function check_admin($conn, $url){
         }
         if($is_admin == false){
             setcookie('message', 'ERROR: You do not have permission to go there. This attempt has been recorded', time() + 10, '/');
-            header("Location: ".$page."cs/list.php");
+            header("Location: /cs/list.php");
         } else {
             return true;
         }
