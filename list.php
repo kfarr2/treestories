@@ -110,7 +110,7 @@ include('libs/light_header.php');
                 <div class="btn-group" id="search-buttons">
                     <button type="submit" class="btn btn-default">Search</button>
                     <a href='/cs/list.php' class='btn btn-warning'>Clear</a>
-                    <a href="<?php echo $page.'/cs'; ?>" class="btn btn-default" id="list_back_button">Back</a>
+                    <a href="<?php echo '/cs'; ?>" class="btn btn-default" id="list_back_button">Back</a>
                 </div>
             </form>
         </div>
