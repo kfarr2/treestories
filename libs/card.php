@@ -52,7 +52,7 @@ function addCard($row){
         '</div>'.
         '<div class="row">'.
             '<div class="col-md-12">'.
-            '<strong>Location: </strong><a class="location-link" href="/list.php?location='.escape_html($row['tree_location']).'">'.$row['tree_location'].'</a></div>'.
+            '<strong>Location: </strong><a class="location-link" href="/cs/list.php?location='.escape_html($row['tree_location']).'">'.$row['tree_location'].'</a></div>'.
         '</div>'.
         '<div class="row">'.
             '<div class="col-md-12"><div class="well"><p>'.$row['content'].'</p>'.
