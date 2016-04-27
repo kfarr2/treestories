@@ -121,7 +121,7 @@ include('libs/light_header.php');
 <div id="cards-container" class="container-fluid">
 <?php
 foreach($displayed as $row){
-    addCard($row);
+    addCard($row, $conn);
 }
 ?>
 </div>
