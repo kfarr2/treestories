@@ -27,13 +27,13 @@ function addCard($row, $conn){
     // show the delete button.
     if(isset($_SESSION['treestories_user_id'])){
 	if((escape_html($row['user_id']) === $_SESSION['treestories_user_id']) || ($outcome['is_admin'] === '1')){
-        $button = "<div class='col-md-12'><a class='pull-right delete-post' href='".$page."libs/delete_post.php?post_id=".escape_html($row['post_id'])."'><span title='Delete this Post?' class='glyphicon glyphicon-trash'></span></a></div>";
+        $button = "<div class='col-md-12'><a class='pull-right delete-post' href='".$page."cs/libs/delete_post.php?post_id=".escape_html($row['post_id'])."'><span title='Delete this Post?' class='glyphicon glyphicon-trash'></span></a></div>";
     	}
     } else {
         $button = "";
     }
 
-    $flag = "<div class='col-md-3'><form method='POST' onsubmit='return confirmFlag();' action=\"/libs/flag_post.php\">";
+    $flag = "<div class='col-md-3'><form method='POST' onsubmit='return confirmFlag();' action=\"/cs/libs/flag_post.php\">";
     $flag .= "<input type='hidden' value='".$row['post_id']."' name='post_id' />";
     $flag .= "<button class='style-as-link pull-right' type='submit' title='Flag as Inappropriate?'>";
     $flag .= "<span class='glyphicon glyphicon-flag'></span></button></form></div>";

@@ -7,7 +7,7 @@
 
     session_start();
 
-    check_admin($conn, '/list.php');
+    check_admin($conn, '/cs/list.php');
 
     $id = $_POST['post_id'];
 
@@ -22,12 +22,11 @@
 
     $emails = $query->fetchAll();
 
-    $link = $page."list.php?id=".$id;
+    $link = $page."cs/list.php?id=".$id;
 
     foreach($emails as $email){
         $subject = "ALERT: Potentially Inappropriate Post Flagged";
         $title = "A Post has been Flagged as Inappropriate.";
-
         $message = "
             <html>
             <head>
@@ -38,13 +37,15 @@
             <p>You are recieving this email because you are listed as an administrator for the Tree Stories web application.</p>
             <p>A recent post has been flagged by a user as inappropriate. The post in question can be found at the following link:</p>
             <p>".$link."</p>
+	    </body>
+	    </html>
             ";
-        $headers = "MIME-Version: 1.0"."\r\n"."Content-type:text-html;charset=UTF-8"."\r\n";
-        $headers .= "From: reminder@treestories.com"."\r\n";
+        $headers = "MIME-Version: 1.0"."\r\n"."Content-type:text/html;charset=UTF-8"."\r\n";
+        $headers .= "From: ".$email_address."\r\n";
         mail($email['email'], $subject, $message, $headers);
     }
 
     // Set the cookie
     setcookie('message', "Post has been flagged as inappropriate. An administrator has been notified.", time()+10, '/');
-    header("Location: ".$page."../list.php");
+    header("Location: ".$page."cs/list.php");
 ?>
