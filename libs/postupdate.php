@@ -137,7 +137,7 @@ if($treestory){
 
     // Now we must send an update to all users whose tree is within
     // the same neighborhood as the tree that was just posted about.
-    $sql = "SELECT DISTINCT u.email FROM users u, posts p WHERE p.tree_location=? AND p.created_by=u.user_id";
+    $sql = "SELECT DISTINCT u.email FROM users u, posts p WHERE (p.tree_location=? AND p.created_by=u.user_id) OR (u.is_admin=1)";
     $query = $conn->prepare($sql);
     $query->bindParam(1, $tree_location, PDO::PARAM_STR);
     try {
@@ -161,7 +161,11 @@ if($treestory){
                 <body>
                 <p>Hello!</p>
                 <p>Someone just posted about a tree in your area. Here's what they had to say:</p>
-                <p>".$treestory."</p>
+                ";
+            if(isset($image_url)){
+		$message.="<img src='".$page.'cs'.$image_url."' alt='Image of tree' width='200px'></img>";
+	    }
+	    $message .= "<p>".$treestory."</p>
                 </body>
                 </html>
                 ";
