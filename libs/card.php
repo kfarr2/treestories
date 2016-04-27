@@ -27,7 +27,7 @@ function addCard($row, $conn){
     // show the delete button.
     if(isset($_SESSION['treestories_user_id'])){
 	if((escape_html($row['user_id']) === $_SESSION['treestories_user_id']) || ($outcome['is_admin'] === '1')){
-        $button = "<div class='col-md-12'><a class='pull-right delete-post' href='".$page."cs/libs/delete_post.php?post_id=".escape_html($row['post_id'])."'><span title='Delete this Post?' class='glyphicon glyphicon-trash'></span></a></div>";
+        $button = "<div class='col-md-12'><a class='pull-right delete-post' href='".$page."libs/delete_post.php?post_id=".escape_html($row['post_id'])."'><span title='Delete this Post?' class='glyphicon glyphicon-trash'></span></a></div>";
     	}
     } else {
         $button = "";
