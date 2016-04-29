@@ -100,7 +100,7 @@ include('libs/light_header.php');
 <div id="list-container" class="container">
     <div class="row" id="list_header">
         <?php echo $admin_button.$logout; ?>
-        <div class="col-md-12 text-center"><h1><a id="title-link" href="/cs">Tree Stories</a></h1><p/>
+        <div class="col-md-12 text-center"><h1><a id="title-link" href="/cs"><?php echo $site_name; ?></a></h1><p/>
         <h4>Whats new in your neck of the woods?</h4></div>
     </div>
     <div class="row" id="search">
