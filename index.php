@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $title = "Tree Stories";
+    $title = $site_name;
     include("libs/connections.php");
     include("libs/helpers.php");
     include("libs/main_header.php");
@@ -26,10 +26,10 @@
 <div class="destroyer" id="copyR">
     <div id="internal">
         <div id="header">
-            <h1>Tree Stories</h1>
+            <h1><?php echo $title; ?></h1>
         </div>
         <div id="main-text">
-            <iframe	src='https://climatecope.research.pdx.edu/csSS/csSS.html'></iframe>
+            <iframe	src='https://climatecope.research.pdx.edu/csSS/csSS.php'></iframe>
         </div>
         <div id="footer">
             <button id="tell-my-story" onclick="destroyButton()">Tell My Story</button>
