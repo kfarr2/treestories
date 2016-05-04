@@ -15,7 +15,7 @@ session_start();
     <link rel="shortcut icon" href="/cs/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/cs/favicon.ico" type="image/x-icon">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+    <script src="//cdn.research.pdx.edu/leaflet/0.7.7/leaflet.js"></script>
 	<script src="/cs/js/leaflet-hash.js"></script>
 	<script src="/cs/js/leaflet.markercluster.js"></script>
 	<script src="/cs/js/Autolinker.min.js"></script>
@@ -30,7 +30,7 @@ session_start();
 	<script src="/cs/data/metro.js"></script>
 	<script src="/cs/js/leaflet-geojson-selector.js"></script>
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css">
+	<link rel="stylesheet" href="//cdn.research.pdx.edu/leaflet/0.7.7/leaflet.css">
     <link rel="stylesheet" href="/cs/css/leaflet-geojson-selector.css">
 	<link rel="stylesheet" type="text/css" href="/cs/css/MarkerCluster.css">
 
