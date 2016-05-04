@@ -1,7 +1,7 @@
 <?php
     session_start();
-    $title = "Tree Stories";
     include("libs/connections.php");
+    $title = $site_name;
     include("libs/helpers.php");
     include("libs/main_header.php");
     if (!isset($_SESSION['CREATED'])) {
@@ -26,10 +26,10 @@
 <div class="destroyer" id="copyR">
     <div id="internal">
         <div id="header">
-            <h1>Tree Stories</h1>
+            <h1><?php echo $title; ?></h1>
         </div>
         <div id="main-text">
-            <iframe	src='https://climatecope.research.pdx.edu/csSS/csSS.html'></iframe>
+            <iframe	src='https://climatecope.research.pdx.edu/csSS/csSS.php?title=<?php echo $title; ?>'></iframe>
         </div>
         <div id="footer">
             <button id="tell-my-story" onclick="destroyButton()">Tell My Story</button>

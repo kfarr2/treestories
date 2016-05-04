@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('libs/helpers.php');
-include('libs/connections.php');
+include_once('libs/connections.php');
 include("libs/card.php");
 include_once("libs/facebook-php-sdk-v4/src/Facebook/autoload.php");
 include_once("libs/google-api-php-client/src/Google/autoload.php");
@@ -87,7 +87,7 @@ for($i = $offset; $i < ($offset + $posts_per_page); $i++){
 messages();
 
 
-if(check_login($conn, '/cs/list.php')){
+if(check_login($conn, $page.'/cs/list.php')){
     $logout = "<a href='/cs/libs/logout.php' id='logout' class='btn btn-default pull-right'>Logout</a>";
 } else {
     $logout = "<a href='/cs/login.php' id='logout' class='btn btn-default pull-right'>Login</a>";
@@ -100,7 +100,7 @@ include('libs/light_header.php');
 <div id="list-container" class="container">
     <div class="row" id="list_header">
         <?php echo $admin_button.$logout; ?>
-        <div class="col-md-12 text-center"><h1><a id="title-link" href="/cs">Tree Stories</a></h1><p/>
+        <div class="col-md-12 text-center"><h1><a id="title-link" href="/cs"><?php echo $site_name; ?></a></h1><p/>
         <h4>Whats new in your neck of the woods?</h4></div>
     </div>
     <div class="row" id="search">
@@ -110,7 +110,7 @@ include('libs/light_header.php');
                 <div class="btn-group" id="search-buttons">
                     <button type="submit" class="btn btn-default">Search</button>
                     <a href='/cs/list.php' class='btn btn-warning'>Clear</a>
-                    <a href="<?php echo $page.'/cs'; ?>" class="btn btn-default" id="list_back_button">Back</a>
+                    <a href="<?php echo '/cs'; ?>" class="btn btn-default" id="list_back_button">Back</a>
                 </div>
             </form>
         </div>
@@ -121,7 +121,7 @@ include('libs/light_header.php');
 <div id="cards-container" class="container-fluid">
 <?php
 foreach($displayed as $row){
-    addCard($row);
+    addCard($row, $conn);
 }
 ?>
 </div>

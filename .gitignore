@@ -3,3 +3,4 @@ files/*
 sessions/*
 .htaccess
 data/*
+errors.log

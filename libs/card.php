@@ -5,7 +5,12 @@ function confirmFlag(){
 
 </script>
 <?php
-function addCard($row){
+function addCard($row, $conn){
+    $sql = "SELECT is_admin FROM users WHERE user_id=?";
+    $result = $conn->prepare($sql);
+    $result->bindParam(1, $_SESSION['treestories_user_id'], PDO::PARAM_STR);
+    $result->execute();
+    $outcome = $result->fetchAll()[0];
 
     // Keep track of where the user is coming from
     $medium = "";
@@ -18,16 +23,17 @@ function addCard($row){
     } else {
         $medium = "None";
     }
-
     // If the user is an admin or the OP,
     // show the delete button.
-    if(isset($_SESSION['treestories_user_id']) && (escape_html($row['user_id']) == $_SESSION['treestories_user_id'] || $row['is_admin'] == 1)){
+    if(isset($_SESSION['treestories_user_id'])){
+	if((escape_html($row['user_id']) === $_SESSION['treestories_user_id']) || ($outcome['is_admin'] === '1')){
         $button = "<div class='col-md-12'><a class='pull-right delete-post' href='".$page."libs/delete_post.php?post_id=".escape_html($row['post_id'])."'><span title='Delete this Post?' class='glyphicon glyphicon-trash'></span></a></div>";
+    	}
     } else {
         $button = "";
     }
 
-    $flag = "<div class='col-md-3'><form method='POST' onsubmit='return confirmFlag();' action=\"/libs/flag_post.php\">";
+    $flag = "<div class='col-md-3'><form method='POST' onsubmit='return confirmFlag();' action=\"/cs/libs/flag_post.php\">";
     $flag .= "<input type='hidden' value='".$row['post_id']."' name='post_id' />";
     $flag .= "<button class='style-as-link pull-right' type='submit' title='Flag as Inappropriate?'>";
     $flag .= "<span class='glyphicon glyphicon-flag'></span></button></form></div>";
@@ -52,7 +58,7 @@ function addCard($row){
         '</div>'.
         '<div class="row">'.
             '<div class="col-md-12">'.
-            '<strong>Location: </strong><a class="location-link" href="/list.php?location='.escape_html($row['tree_location']).'">'.$row['tree_location'].'</a></div>'.
+            '<strong>Location: </strong><a class="location-link" href="/cs/list.php?location='.escape_html($row['tree_location']).'">'.$row['tree_location'].'</a></div>'.
         '</div>'.
         '<div class="row">'.
             '<div class="col-md-12"><div class="well"><p>'.$row['content'].'</p>'.

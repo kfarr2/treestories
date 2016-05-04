@@ -1,7 +1,11 @@
 <?php include('light_header.php'); ?>
 <div id='legend'>
     <p>
-    <a class="btn btn-default btn-xs" href='/cs/login.php'><span class="glyphicon glyphicon-user"></span> Login</a>
+    <?php 
+	if(!check_login($conn, $page.'/cs/list.php')){
+	    echo "<a class='btn btn-default btn-xs' href='/cs/login.php'><span class='glyphicon glyphicon-user'></span> Login</a>";
+	}
+    ?>
     <a class="btn btn-default btn-xs" href='/cs/list.php'><span class="glyphicon glyphicon-list"></span> See All Posts</a>
     <span class="glyphicon glyphicon-collapse-down pull-right" title="Hide Legend" id="hide"></span>
     </p>

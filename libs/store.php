@@ -9,15 +9,8 @@ ini_set('display_errors',1);
 error_reporting(E_ALL);
 
 // path to where we will store the image files
-$filepath = $_SERVER['DOCUMENT_ROOT']."/files/tmp/";
+$filepath = $_SERVER['DOCUMENT_ROOT']."/cs/files/tmp/";
 
-$accepted_extensions = [
-    'png'=>'png',
-    'jpg'=>'jpg',
-    'gif'=>'gif',
-    'bmp'=>'bmp',
-    'jpeg'=>'jpeg'
-];
 
 
 // log the data
@@ -27,7 +20,7 @@ function _log($str) {
     echo $log_str;
 
     // Log data to file
-    if(($fp = fopen($_SERVER['DOCUMENT_ROOT'].'/files/upload_log.txt', 'a+')) !== false){
+    if(($fp = fopen($_SERVER['DOCUMENT_ROOT'].'/cs/files/upload_log.txt', 'a+')) !== false){
         fputs($fp, $log_str);
         fclose($fp);
     }
@@ -53,7 +46,14 @@ function rrmdir($dir){
 
 // takes all the chunks and puts them together in 1 file.
 function createFileFromChunks($temp_dir, $fileName, $chunkSize, $totalSize, $total_files) {
-    $filepath = $_SERVER['DOCUMENT_ROOT']."/files/tmp/";
+    $accepted_extensions = array(
+        "png"=>"png",
+        "jpg"=>"jpg",
+        "gif"=>"gif",
+        "bmp"=>"bmp",
+        "jpeg"=>"jpeg",
+    );
+    $filepath = $_SERVER['DOCUMENT_ROOT']."/cs/files/tmp/";
     $total_files_on_server_size = 0;
     $temp_total = 0;
     foreach(scandir($temp_dir) as $file){
@@ -69,8 +69,9 @@ function createFileFromChunks($temp_dir, $fileName, $chunkSize, $totalSize, $tot
                 _log('writing chunk'.$i.' of '.$fileName);
             }
             fclose($fp);
-            $ext = end(explode('.', $fileName));
-            if(!in_array($ext, $accepted_extension)) {
+            $tmp = explode(".", $fileName);
+	    $ext = end($tmp);
+            if(!in_array($ext, $accepted_extensions)) {
                 _log('File not of accepted type. Post was not submitted.');
                 unlink($fileName);
                 return false;
