@@ -13,6 +13,7 @@
     }
 ?>
 <script>
+    var base_dir = '<?php echo BASE_DIR; ?>';
     var logged_in = <?php
     $logged_in = ($_SESSION['fb_access_token'] != NULL ? 1 : 0) || ($_SESSION['google_access_token'] != NULL ? 1 : 0);
     if($logged_in){

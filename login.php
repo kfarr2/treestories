@@ -28,7 +28,7 @@
         async: true,
         success: function(html){
             $("#center").append(html);
-            $("#center").append("<hr /><a id='back' href='/cs/list.php'><button class='btn btn-danger'>I Don\'t Want To Sign In.</button></a>");
+            $("#center").append("<hr /><a id='back' href='<?php echo BASE_DIR;?>list.php'><button class='btn btn-danger'>I Don\'t Want To Sign In.</button></a>");
         }
     });
 </script>

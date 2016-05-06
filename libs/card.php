@@ -33,7 +33,7 @@ function addCard($row, $conn){
         $button = "";
     }
 
-    $flag = "<div class='col-md-3'><form method='POST' onsubmit='return confirmFlag();' action=\"/cs/libs/flag_post.php\">";
+    $flag = "<div class='col-md-3'><form method='POST' onsubmit='return confirmFlag();' action=".BASE_DIR."libs/flag_post.php\">";
     $flag .= "<input type='hidden' value='".$row['post_id']."' name='post_id' />";
     $flag .= "<button class='style-as-link pull-right' type='submit' title='Flag as Inappropriate?'>";
     $flag .= "<span class='glyphicon glyphicon-flag'></span></button></form></div>";
@@ -58,7 +58,7 @@ function addCard($row, $conn){
         '</div>'.
         '<div class="row">'.
             '<div class="col-md-12">'.
-            '<strong>Location: </strong><a class="location-link" href="/cs/list.php?location='.escape_html($row['tree_location']).'">'.$row['tree_location'].'</a></div>'.
+            '<strong>Location: </strong><a class="location-link" href="'.BASE_DIR.'list.php?location='.escape_html($row['tree_location']).'">'.$row['tree_location'].'</a></div>'.
         '</div>'.
         '<div class="row">'.
             '<div class="col-md-12"><div class="well"><p>'.$row['content'].'</p>'.

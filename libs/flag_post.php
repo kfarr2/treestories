@@ -7,7 +7,7 @@
 
     session_start();
 
-    check_admin($conn, '/cs/list.php');
+    check_admin($conn, BASE_DIR.'list.php');
 
     $id = $_POST['post_id'];
 
@@ -47,5 +47,5 @@
 
     // Set the cookie
     setcookie('message', "Post has been flagged as inappropriate. An administrator has been notified.", time()+10, '/');
-    header("Location: ".$page."cs/list.php");
+    header("Location: ".$page.BASE_DIR."list.php");
 ?>

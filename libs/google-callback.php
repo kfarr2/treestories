@@ -25,7 +25,7 @@ if (isset($_GET['code'])) {
 
 $_SESSION['verify'] = false;
 
-$redirect = 'http://' . $_SERVER['HTTP_HOST'] . '/cs/';
+$redirect = 'http://' . $_SERVER['HTTP_HOST'] . BASE_DIR;
 header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 exit();
 ?>
