@@ -47,7 +47,7 @@ function check_admin($conn, $url){
         }
         if($is_admin == false){
             setcookie('message', 'ERROR: You do not have permission to go there. This attempt has been recorded', time() + 10, '/');
-            header("Location: /cs/list.php");
+            header("Location: ".BASE_DIR."list.php");
         } else {
             return true;
         }
@@ -70,7 +70,7 @@ function get_google_info(){
         $_SESSION['fb_access_token'] = NULL;
         $_SESSION['google_access_token'] = NULL;
         setcookie('message', 'ERROR: User Authentication Error', time() + 10, '/');
-        header("Location: ".$page."cs/");
+        header("Location: ".$page.BASE_DIR);
     }
 
     $userNode = array();

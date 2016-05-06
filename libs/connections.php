@@ -55,5 +55,7 @@ $page = "http" . ($_SERVER["HTTPS"] == "on" ? "s": "") . "://" . $_SERVER['HTTP_
 
 $email_address = $_config['email_address'];
 
+$base_dir = $_config['base_dir'];
+define(BASE_DIR, $base_dir);
 
 ?>

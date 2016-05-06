@@ -281,7 +281,7 @@ function getPopupContent(){
             // so get the treestory form and put
             // it in the popcont variable
             $.ajax({
-                url: "/cs/popup.php",
+                url: base_dir+"popup.php",
                 type: 'get',
                 async: true,
                 success: function(html){
@@ -294,7 +294,7 @@ function getPopupContent(){
             // User is not logged into social media.
             // Fill popcont with login form.
             $.ajax({
-                url: "/cs/libs/login.php",
+                url: base_dir+"libs/login.php",
                 type: 'get',
                 async: true,
                 success: function(html){

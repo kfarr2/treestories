@@ -17,7 +17,7 @@ $fb = new Facebook\Facebook([
 $helper = $fb->getRedirectLoginHelper();
 $permissions = ['email'];
 
-$loginUrl = $helper->getLoginUrl($page.'cs/libs/fb-callback.php', $permissions);
+$loginUrl = $helper->getLoginUrl($page.BASE_DIR.'libs/fb-callback.php', $permissions);
 
 
 // save the facebook info as a session variable since it seems to unset itself.
@@ -71,7 +71,7 @@ if(strpos($google_app_id, "googleusercontent") == false){
 
 // Google login
 if(isset($authUrl)){
-    echo "<a class='login' href='" . $authUrl . "'><img src='".$page."cs/pictures/google-button.png'></img></a>";
+    echo "<a class='login' href='" . $authUrl . "'><img src='".$page.BASE_DIR."pictures/google-button.png'></img></a>";
 } else {
   echo '
     <form id="url" method="GET" action="{$_SERVER["PHP_SELF"]}">
@@ -81,7 +81,7 @@ if(isset($authUrl)){
     <a class="logout" href="?logout">Logout</a>';
 }
 // Facebook login
-echo '<a href="'.escape_html($loginUrl).'"><img src="'.$page.'cs/pictures/facebook-button.png"></img></a>';
+echo '<a href="'.escape_html($loginUrl).'"><img src="'.$page.BASE_DIR.'pictures/facebook-button.png"></img></a>';
 
 ?>
 </div>

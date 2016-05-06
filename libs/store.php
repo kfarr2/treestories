@@ -9,7 +9,7 @@ ini_set('display_errors',1);
 error_reporting(E_ALL);
 
 // path to where we will store the image files
-$filepath = $_SERVER['DOCUMENT_ROOT']."/cs/files/tmp/";
+$filepath = $_SERVER['DOCUMENT_ROOT'].BASE_DIR."files/tmp/";
 
 
 
@@ -20,7 +20,7 @@ function _log($str) {
     echo $log_str;
 
     // Log data to file
-    if(($fp = fopen($_SERVER['DOCUMENT_ROOT'].'/cs/files/upload_log.txt', 'a+')) !== false){
+    if(($fp = fopen($_SERVER['DOCUMENT_ROOT'].BASE_DIR.'files/upload_log.txt', 'a+')) !== false){
         fputs($fp, $log_str);
         fclose($fp);
     }
@@ -53,7 +53,7 @@ function createFileFromChunks($temp_dir, $fileName, $chunkSize, $totalSize, $tot
         "bmp"=>"bmp",
         "jpeg"=>"jpeg",
     );
-    $filepath = $_SERVER['DOCUMENT_ROOT']."/cs/files/tmp/";
+    $filepath = $_SERVER['DOCUMENT_ROOT'].BASE_DIR."files/tmp/";
     $total_files_on_server_size = 0;
     $temp_total = 0;
     foreach(scandir($temp_dir) as $file){
