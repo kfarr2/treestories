@@ -47,7 +47,7 @@
 
     $results = $query->fetchAll();
 
-    $sql = "SELECT tree_id, tree_location FROM posts WHERE created_on > ?";
+    $sql = "SELECT tree_id, tree_location, image_url FROM posts WHERE created_on > ?";
     $query = $conn->prepare($sql);
     $query->bindParam(1, $date, PDO::PARAM_STR);
     $query->execute();
@@ -82,10 +82,11 @@
     <?php
         foreach($trees as $tree){
     ?>
-        updated_trees.push([<?php echo $tree["tree_id"]; ?>,<?php echo '"'.$tree["tree_location"].'"';?>]);
+        updated_trees.push([<?php echo $tree["tree_id"]; ?>,<?php echo '"'.$tree["tree_location"].'"';?>,<?php echo '"'.$tree["image_url"].'"';?>]);
     <?php
         }
     ?>
+    console.log(updated_trees);
 </script>
 <?php
     include("libs/legend.php");
