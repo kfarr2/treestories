@@ -378,6 +378,29 @@ th {
     overflow-x: hidden;
 }
 
+.popup-image {
+    max-width: 100px;
+    max-height: 100px;
+    visibility: hidden;
+}
+
+.popup-image-container {
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    background-size: cover;
+    position: absolute;
+}
+
+.popup-image-div {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
 #popup-form {
     margin: 1em auto;
     max-width: 257px;
@@ -389,8 +412,8 @@ th {
     width: 100%;
 }
 
-#story-link > button {
-    width: 100%;
+#story-link {
+    max-width: 100px;
 }
 
 .style-as-link {

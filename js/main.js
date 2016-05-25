@@ -351,24 +351,45 @@ function nboChange(x){
             var located = Autolinker.link(dataName2);
             var id = Autolinker.link(idNumber);
             // Create template for info
-            template = '<div id="popup"><div class="row"><div class="col-md-4"><strong>Height</strong></div><div class="col-md-8">' + height + '</div></div><div class="row"><div class="col-md-4"><strong>Location</strong></div><div class="col-md-8">' + located + '</div></div><div class="row"><div class="col-md-4"><strong>Tree ID</strong></div><div id="tree-id" class="col-md-8">' + id + '</div></div>';
+            template = '<div id="popup">';
+
+	    var tree_info = '<div class="row"><div class="col-md-4"><strong>Height</strong></div><div class="col-md-8">' + height + '</div></div><div class="row"><div class="col-md-4"><strong>Location</strong></div><div class="col-md-8">' + located + '</div></div><div class="row"><div class="col-md-4"><strong>Tree ID</strong></div><div id="tree-id" class="col-md-8">' + id + '</div></div>';
 
             var contains = false;
             var story_count = 0;
+	    var image_url = [];
             $(updated_trees).each(function(){
                 if($(this)[0] == id && $(this)[1] == located){
                     contains = true;
-                    story_count++;
                 }
+		if($(this)[1] == located){
+                    story_count++;
+		    image_url.push($(this)[2]);
+		}
             });
             if(contains){
-                template += '<hr />';
+	        console.log(image_url);
+		template += '<div class="popup-image-div">';
                 if(story_count > 1){
-                    template += '<a id="story-link" href="/cs/list.php?location=' + located + '&id=' + id + '"><button class="btn btn-default btn-xs">See all Tree Stories for this tree</button></a>';
-                } else {
-                    template += '<a id="story-link" href="/cs/list.php?location='+located+'"><button class="btn btn-default btn-xs">See all Neighborhood Tree Stories</button></a>';
+		    template += "<div class='popup-images'>"
+		    template += '<a id="story-link" href="/cs/list.php?location='+located+'">';
+		    for(i = 0; i < story_count; i++){
+			var filepath = base_dir+image_url[i];
+			var offset = i*100;
+                        template += '<div class="item popup-image-container" style="background-image: url(\''+filepath+'\'); background-repeat: no-repeat; background-position: center; max-width: 100px; max-height: 100px; left: '+offset+'px;"></div>';
+		    }
+		    template += '</a>';
+		    template += "</div>";
+                
+		} else {
+		    var filepath = base_dir+image_url[0];
+		    template += '<a id="story-link" href="/cs/list.php?location='+located+'">';
+                    template += '<div class="popup-image-container" style="background-image: url(\''+filepath+'\'); background-repeat: no-repeat; background-position: center;">';
+		    template += '</div></a>';
                 }
+                template += '</div><hr />';
             }
+	    template += tree_info;
             if(logged_in){
                 // Make sure the tree id gets passed to the update script
                 target = "value=\"";
@@ -383,6 +404,7 @@ function nboChange(x){
 
             jCount= [];
             jCount.push(idNumber);
+
 
         }
     });
