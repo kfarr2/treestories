@@ -379,26 +379,26 @@ th {
 }
 
 .popup-image {
-    max-width: 100px;
-    max-height: 100px;
-    visibility: hidden;
-}
-
-.popup-image-container {
     width: 100px;
     height: 100px;
     max-width: 100px;
     max-height: 100px;
     background-size: cover;
     position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.popup-image-div {
+.popup-images {
+    height: 100%;
+    position: absolute;
+}
+
+#popup-image-container {
     position: relative;
     width: 100%;
     height: 100px;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 #popup-form {
