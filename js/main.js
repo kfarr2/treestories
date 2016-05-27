@@ -355,56 +355,37 @@ function nboChange(x){
 
 	    var tree_info = '<div class="row"><div class="col-md-4"><strong>Height</strong></div><div class="col-md-8">' + height + '</div></div><div class="row"><div class="col-md-4"><strong>Location</strong></div><div class="col-md-8">' + located + '</div></div><div class="row"><div class="col-md-4"><strong>Tree ID</strong></div><div id="tree-id" class="col-md-8">' + id + '</div></div>';
 
-            var contains = false;
-            var story_count = 0;
+        var contains = false;
+        var story_count = 0;
 	    var image_url = [];
-            $(updated_trees).each(function(){
-                if($(this)[0] == id && $(this)[1] == located){
-                    contains = true;
-                }
-		if($(this)[1] == located){
-                    story_count++;
-		    image_url.push($(this)[2]);
-		}
-            });
-            if(contains){
-	        console.log(image_url);
-		template += '<div class="popup-image-div">';
-                if(story_count > 1){
-		    template += "<div class='popup-images'>"
-		    template += '<a id="story-link" href="/cs/list.php?location='+located+'">';
-		    for(i = 0; i < story_count; i++){
-			var filepath = base_dir+image_url[i];
-			var offset = i*100;
-                        template += '<div class="item popup-image-container" style="background-image: url(\''+filepath+'\'); background-repeat: no-repeat; background-position: center; max-width: 100px; max-height: 100px; left: '+offset+'px;"></div>';
-		    }
-		    template += '</a>';
-		    template += "</div>";
-                
-		} else {
-		    var filepath = base_dir+image_url[0];
-		    template += '<a id="story-link" href="/cs/list.php?location='+located+'">';
-                    template += '<div class="popup-image-container" style="background-image: url(\''+filepath+'\'); background-repeat: no-repeat; background-position: center;">';
-		    template += '</div></a>';
-                }
-                template += '</div><hr />';
+        $(updated_trees).each(function(){
+            if($(this)[0] == id && $(this)[1] == located){
+                contains = true;
             }
-	    template += tree_info;
-            if(logged_in){
-                // Make sure the tree id gets passed to the update script
-                target = "value=\"";
-                var querystring = id + " " + located + ", ";
-                var position = popcont.indexOf(target) + target.length;
-                popcont = [popcont.slice(0, position), querystring, popcont.slice(position)].join('');
+            if($(this)[1] == located){
+                story_count++;
+                image_url.push($(this)[2]);
             }
+        });
+        if(contains){
+            var scrolldiv = createScrollDiv(image_url, located, base_dir);
+            template += scrolldiv;
+        }
+        template += tree_info;
+        if(logged_in){
+            // Make sure the tree id gets passed to the update script
+            target = "value=\"";
+            var querystring = id + " " + located + ", ";
+            var position = popcont.indexOf(target) + target.length;
+            popcont = [popcont.slice(0, position), querystring, popcont.slice(position)].join('');
+        }
 
-            // Update popup content
-            template += popcont;
-            layer.bindPopup(template);
+        // Update popup content
+        template += popcont;
+        layer.bindPopup(template);
 
-            jCount= [];
-            jCount.push(idNumber);
-
+        jCount= [];
+        jCount.push(idNumber);
 
         }
     });
@@ -425,6 +406,7 @@ function nboChange(x){
     // Get the script having to do with uploads,
     // but only when an upload needs to be done
     $.getScript('/cs/js/upload.js');
+    $.getScript('/cs/js/popup-action.js');
 };
 
 $('#menu').css('margin-top', $('.leaflet-control-zoom-out').height()*2 + 20);
