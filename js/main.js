@@ -405,8 +405,8 @@ function nboChange(x){
 
     // Get the script having to do with uploads,
     // but only when an upload needs to be done
-    $.getScript('/cs/js/upload.js');
-    $.getScript('/cs/js/popup-action.js');
+    $.getScript(base_dir + '/js/upload.js');
+    $.getScript(base_dir + '/js/popup-action.js');
 };
 
 $('#menu').css('margin-top', $('.leaflet-control-zoom-out').height()*2 + 20);

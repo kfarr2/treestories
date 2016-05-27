@@ -4,7 +4,7 @@ function createScrollDiv(image_urls, located, base_dir){
     var html = "<div id='popup-image-container'>";
     var width = count * 100;
     html += "<div class='popup-images' style='width: "+width+"px;'>"
-    html += '<a id="story-link" href="/cs/list.php?location='+located+'">';
+    html += '<a id="story-link" href="'+base_dir+'/list.php?location='+located+'">';
     for(i = 0; i < count; i++){
         var filepath = base_dir+image_urls[i];
         var offset = i*100;
