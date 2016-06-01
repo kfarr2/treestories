@@ -21,7 +21,7 @@ $result = $query->fetchAll()[0];
 
 if(!isset($result)){
     setcookie('message', 'ERROR: That user does not exist.');
-    header("Location: ".$page."cs/admin.php");
+    header("Location: ".rtrim($page, "/").BASE_DIR."admin.php");
 }
 
 ?>

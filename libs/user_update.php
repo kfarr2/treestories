@@ -20,5 +20,5 @@
     $query->execute();
 
     setcookie('message', 'User Updated', time() + 10, '/');
-    header("Location: ".$page."cs/admin.php");
+    header("Location: ".rtrim($page, "/").BASE_DIR."admin.php");
 ?>

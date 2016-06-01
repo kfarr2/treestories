@@ -11,7 +11,7 @@ $client->setApplicationName("Tree Stories Client");
 $client->setDeveloperKey($google_api_key);
 $client->setClientId($google_app_id);
 $client->setClientSecret($google_app_secret);
-$client->setRedirectUri($page.'cs/libs/google-callback.php');
+$client->setRedirectUri(rtrim($page, "/").BASE_DIR.'libs/google-callback.php');
 $client->setScopes(array("https://www.googleapis.com/auth/urlshortener", 'email', 'profile'));
 
 

@@ -87,7 +87,7 @@ for($i = $offset; $i < ($offset + $posts_per_page); $i++){
 messages();
 
 
-if(check_login($conn, $page.BASE_DIR.'list.php')){
+if(check_login($conn, rtrim($page, "/").BASE_DIR.'list.php')){
     $logout = "<a href='".BASE_DIR."libs/logout.php' id='logout' class='btn btn-default pull-right'>Logout</a>";
 } else {
     $logout = "<a href='".BASE_DIR."login.php' id='logout' class='btn btn-default pull-right'>Login</a>";
