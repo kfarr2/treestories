@@ -70,7 +70,7 @@ function get_google_info(){
         $_SESSION['fb_access_token'] = NULL;
         $_SESSION['google_access_token'] = NULL;
         setcookie('message', 'ERROR: User Authentication Error', time() + 10, '/');
-        header("Location: ".$page.BASE_DIR);
+        header("Location: ".rtrim($page, "/").BASE_DIR);
     }
 
     $userNode = array();

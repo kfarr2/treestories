@@ -6,6 +6,7 @@ require_once('connections.php');
 require_once('facebook-php-sdk-v4/src/Facebook/autoload.php');
 require_once('google-api-php-client/src/Google/autoload.php');
 
+$page = rtrim($page, "/");
 
 // Facebook
 $fb = new Facebook\Facebook([
@@ -37,7 +38,7 @@ $client->setApplicationName("Tree Stories Client");
 $client->setDeveloperKey($google_api_key);
 $client->setClientId($google_app_id);
 $client->setClientSecret($google_app_secret);
-$client->setRedirectUri($page."cs/libs/google-callback.php");
+$client->setRedirectUri($page.BASE_DIR."libs/google-callback.php");
 $client->setScopes(array("https://www.googleapis.com/auth/urlshortener", 'email', 'profile'));
 
 $service = new Google_Service_Urlshortener($client);

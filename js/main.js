@@ -364,9 +364,9 @@ function nboChange(x){
             if(contains){
                 template += '<hr />';
                 if(story_count > 1){
-                    template += '<a id="story-link" href="/cs/list.php?location=' + located + '&id=' + id + '"><button class="btn btn-default btn-xs">See all Tree Stories for this tree</button></a>';
+                    template += '<a id="story-link" href="'+base_dir+'/list.php?location=' + located + '&id=' + id + '"><button class="btn btn-default btn-xs">See all Tree Stories for this tree</button></a>';
                 } else {
-                    template += '<a id="story-link" href="/cs/list.php?location='+located+'"><button class="btn btn-default btn-xs">See all Neighborhood Tree Stories</button></a>';
+                    template += '<a id="story-link" href="'+base_dir+'/list.php?location='+located+'"><button class="btn btn-default btn-xs">See all Neighborhood Tree Stories</button></a>';
                 }
             }
             if(logged_in){
@@ -402,7 +402,7 @@ function nboChange(x){
 
     // Get the script having to do with uploads,
     // but only when an upload needs to be done
-    $.getScript('/cs/js/upload.js');
+    $.getScript(base_dir+'/js/upload.js');
 };
 
 $('#menu').css('margin-top', $('.leaflet-control-zoom-out').height()*2 + 20);

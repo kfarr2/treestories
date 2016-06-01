@@ -40,7 +40,7 @@ function addCard($row, $conn){
 
     if($row['image_url'] !== NULL){
         $image = '<div class="row">'.
-                    '<div class="col-md-12"><div class="card-image-container"><div class="card-image" style="background-image:url(\'/cs'.$row['image_url'].'\');"></div></div></div>'.
+                    '<div class="col-md-12"><div class="card-image-container"><div class="card-image" style="background-image:url(\''.rtrim(BASE_DIR, "/").$row['image_url'].'\');"></div></div></div>'.
                  '</div>';
     } else {
         $image = "";

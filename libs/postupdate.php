@@ -163,7 +163,7 @@ if($treestory){
                 <p>Someone just posted about a tree in your area. Here's what they had to say:</p>
                 ";
             if(isset($image_url)){
-		$message.="<img src='".$page.'cs'.$image_url."' alt='Image of tree' width='200px'></img>";
+		$message.="<img src='".rtrim($page, "/").BASE_DIR.$image_url."' alt='Image of tree' width='200px'></img>";
 	    }
 	    $message .= "<p>".$treestory."</p>
                 </body>
@@ -178,6 +178,6 @@ if($treestory){
     setcookie('message', 'ERROR: Cannot post empty story', time() + 10, '/');
 }
 // And redirect to the list page
-header("Location: ".$page.'cs/list.php');
+header("Location: ".rtrim($page, "/").BASE_DIR'list.php');
 
 ?>

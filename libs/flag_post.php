@@ -47,5 +47,5 @@
 
     // Set the cookie
     setcookie('message', "Post has been flagged as inappropriate. An administrator has been notified.", time()+10, '/');
-    header("Location: ".$page.BASE_DIR."list.php");
+    header("Location: ".rtrim($page, "/").BASE_DIR."list.php");
 ?>
