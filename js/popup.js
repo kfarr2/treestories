@@ -6,13 +6,15 @@ function createCarousel(img_urls, located, base_dir){
     }
     console.log(count);
     var html = "<div id='popup-image-container'>";
-    if(count == 0){
-        html += '<a href="/cs/list.php?location='+located+'">';
-        html += '<div id="story-link" style="background-image: url(\''+base_dir+'pictures/tree.png\');"';
-        html += "></div></a>";
-    } else if(count == 1){
-        html += '<a href="/cs/list.php?location='+located+'">';
-        html += '<div id="story-link" style="background-image: url(\''+base_dir+img_urls[0]+'\');"';
+    if(count == 1){
+        html += '<a href="/cs/list.php?location='+located+'&id='+img_urls[0][0]+'">';
+        html += '<div id="story-link" style="background-image: url(\'';
+        if(img_urls[0][1] != ''){
+            html += base_dir+img_urls[0][1];
+        } else {
+            html += base_dir+'pictures/tree.png';
+        }
+        html +='\');"';
         html += "></div></a>";
     } else {
         html += "<div id='carousel' class='carousel slide' data-ride='carousel'>";
@@ -33,8 +35,14 @@ function createCarousel(img_urls, located, base_dir){
                 html += ' active';
             }
             html += '" role="listbox">';
-            html += '<a href="/cs/list.php?location='+located+'">';
-            html += '<div id="story-link" style="background-image: url(\''+base_dir+img_urls[i]+'\');"';
+            html += '<a href="/cs/list.php?location='+located+'&id='+img_urls[i][0]+'">';
+            html += '<div id="story-link" style="background-image: url(\'';
+            if(img_urls[i][1] != ''){
+                html += base_dir+img_urls[i][1];
+            } else {
+                html += base_dir+'pictures/tree.png';
+            }
+            html +='\');"';
             html += "></div></a></div>";
         }
         html += "</div>";

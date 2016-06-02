@@ -360,17 +360,22 @@ function nboChange(x){
 
 	    var tree_info = '<div class="row"><div class="col-md-4"><strong>Height</strong></div><div class="col-md-8">' + height + '</div></div><div class="row"><div class="col-md-4"><strong>Location</strong></div><div class="col-md-8">' + located + '</div></div><div class="row"><div class="col-md-4"><strong>Tree ID</strong></div><div id="tree-id" class="col-md-8">' + id + '</div></div>';
 
+        var contains = false;
         var story_count = 0;
 	    var image_url = [];
         $(updated_trees).each(function(){
             if($(this)[0] == id && $(this)[1] == located){
+                contains = true;
                 story_count++;
-                image_url.push($(this)[2]);
+                image_url.push([id, $(this)[2]]);
             }
         });
-        var scrolldiv = createCarousel(image_url, located, base_dir);
-        template += scrolldiv;
-
+        if(contains){
+            var scrolldiv = createCarousel(image_url, located, base_dir);
+            template += scrolldiv;
+        } else {
+            template += "<div id='popup-link' class='text-center'><a href='"+base_dir+"list.php?location="+located+"' class='text-center'>No Stories For This Tree.</a></div>";
+        }
         template += tree_info;
         if(logged_in){
             // Make sure the tree id gets passed to the update script

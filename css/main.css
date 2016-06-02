@@ -399,12 +399,17 @@ th {
     width: 100%;
     overflow: hidden;
     height: 200px;
+    margin-bottom: 1em;
 }
 
 #popup-form {
     margin: 1em auto;
     max-width: 257px;
     overflow-x: hidden;
+}
+
+#popup-link {
+    margin-bottom: 1em;
 }
 
 #submit-treestory {
