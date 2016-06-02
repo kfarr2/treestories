@@ -397,8 +397,8 @@ th {
 #popup-image-container {
     position: relative;
     width: 100%;
-    height: 100px;
     overflow: hidden;
+    height: 200px;
 }
 
 #popup-form {
@@ -413,7 +413,10 @@ th {
 }
 
 #story-link {
-    max-width: 100px;
+    width: 100%;
+    height: 200px;
+    background-position: center;
+    background-size: cover;
 }
 
 .style-as-link {

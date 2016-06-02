@@ -351,26 +351,26 @@ function nboChange(x){
             var located = Autolinker.link(dataName2);
             var id = Autolinker.link(idNumber);
             // Create template for info
-            template = '<div id="popup">';
+            template = '<div id="popup" ';
+            if(logged_in==false){
+                template += 'style="max-width: 201px;">';
+            } else {
+                template += 'style="max-width: 258px;">';
+            }
 
 	    var tree_info = '<div class="row"><div class="col-md-4"><strong>Height</strong></div><div class="col-md-8">' + height + '</div></div><div class="row"><div class="col-md-4"><strong>Location</strong></div><div class="col-md-8">' + located + '</div></div><div class="row"><div class="col-md-4"><strong>Tree ID</strong></div><div id="tree-id" class="col-md-8">' + id + '</div></div>';
 
-        var contains = false;
         var story_count = 0;
 	    var image_url = [];
         $(updated_trees).each(function(){
             if($(this)[0] == id && $(this)[1] == located){
-                contains = true;
-            }
-            if($(this)[1] == located){
                 story_count++;
                 image_url.push($(this)[2]);
             }
         });
-        if(contains){
-            var scrolldiv = createScrollDiv(image_url, located, base_dir);
-            template += scrolldiv;
-        }
+        var scrolldiv = createCarousel(image_url, located, base_dir);
+        template += scrolldiv;
+
         template += tree_info;
         if(logged_in){
             // Make sure the tree id gets passed to the update script
