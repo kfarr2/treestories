@@ -4,9 +4,15 @@ function createCarousel(img_urls, located, base_dir){
     if(img_urls != null){
         count = img_urls.length;
     }
+    var no_img = 0;
+    for(i=0; i<count; i++){
+        if(img_urls[i][1]==''){
+            no_img++;
+        }
+    }
     console.log(count);
     var html = "<div id='popup-image-container'>";
-    if(count == 1){
+    if(count == 1 || count-no_img == 0){
         html += '<a href="'+base_dir+'list.php?location='+located+'&id='+img_urls[0][0]+'">';
         html += '<div id="story-link" style="background-image: url(\'';
         if(img_urls[0][1] != ''){
@@ -18,12 +24,6 @@ function createCarousel(img_urls, located, base_dir){
         html += "></div></a>";
     } else {
         html += "<div id='carousel' class='carousel slide' data-ride='carousel'>";
-        var no_img = 0;
-        for(i=0; i<count; i++){
-            if(img_urls[i][1]==''){
-                no_img++;
-            }
-        }
         if(count - no_img > 1){
             html += "<ol class='carousel-indicators'>";
             for(i=0; i<count; i++){
