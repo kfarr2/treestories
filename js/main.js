@@ -367,7 +367,7 @@ function nboChange(x){
             if($(this)[0] == id && $(this)[1] == located){
                 contains = true;
                 story_count++;
-                image_url.push([id, $(this)[2]]);
+                image_url.push([id, $(this)[2], $(this)[3]]);
             }
         });
         if(contains){
