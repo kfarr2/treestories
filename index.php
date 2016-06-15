@@ -82,7 +82,7 @@
     <?php
         foreach($trees as $tree){
     ?>
-        var content = <?php echo '"'.escape_html(rtrim($tree['content'])).'"';?>;
+        var content = <?php echo json_encode(escape_html($tree['content'])) ?>;
         var info = [<?php echo $tree["tree_id"]; ?>,<?php echo '"'.$tree["tree_location"].'"';?>,<?php echo '"'.$tree["image_url"].'"';?>, content];
         updated_trees.push(info);
     <?php
